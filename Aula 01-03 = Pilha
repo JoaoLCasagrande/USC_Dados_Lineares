@@ -1,0 +1,86 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#define max 5
+
+int dado [max];
+int topo = 0;
+int op;
+
+//varives declara fora de tudo, contexto global. 
+void exibir(void){
+    printf("\n");
+        for (int temp= topo-1; temp >=0; temp--)
+        {
+            printf("Na posição %d temos %d\n", temp, dado[temp]);
+        }
+        printf("\n");
+        system("PAUSE");
+        
+}
+
+void inserir(void){
+    if (topo == max){
+        printf("A pilha esta cheia. \n");
+    }
+    else{
+        printf("Digite o valor para entra na pilha: \n");
+        scanf("%d", &dado[topo]);
+        topo++;
+    }
+    exibir();
+}
+
+void top(void){
+    printf("\n o valor do topo na pilha é %d\n", dado[topo-1]);
+    //topo--;
+    system("PAUSE");
+    
+}
+
+void remover(void){
+    if (topo == 0){
+        printf("\nA pilha esta vazia \n");
+    }
+    else{
+        printf("\nRetirado o valor %d da pilha\n", dado[topo-1]);
+        topo--;
+    }
+    exibir();
+}
+
+
+int menu(){
+    //switch case 
+    
+    printf("---Programa de pilha em C---");
+    printf("\nDigite 1 para inserir ");
+    printf("\nDigite 2 para remover ");
+    printf("\nDigite 3 para exibir ");
+    printf("\nDigite 4 para ver o topo ");
+    printf("\nSe você deseja sair, aperte 5 ");
+    //printf("\ndigite a opção que vc quer executar: ");
+    scanf("%d", &op); // leitura da entrada via teclado
+    
+    switch(op){
+        case 1: inserir();
+            break;
+        case 2: remover();
+            break;
+        case 3: exibir();
+            break;
+        case 4: top();
+            break;
+        case 5: break;    
+    }
+    return 0;
+}
+
+int main(){
+    
+    while ( op != 5){
+        system("cls");
+        menu();
+    }
+    return 0;
+}
