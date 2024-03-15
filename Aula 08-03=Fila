@@ -1,0 +1,90 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#define max 5
+
+int dado [max];
+int fim = 0;
+int comeco = 0;
+int op;
+
+//varives declara fora de tudo, contexto global. 
+void exibir(void){
+    printf("\n");
+        for (int temp= fim-1; temp >=0; temp--)
+        {
+            printf("Na posição %d temos %d\n", temp, dado[temp]);
+        }
+        printf("\n");
+        system("PAUSE");
+        
+}
+
+void inserir(void){
+    if (fim == max){
+        printf("A fila esta cheia. \n");
+    }
+    else{
+        printf("Digite o valor para entra na fila: \n");
+        scanf("%d", &dado[fim]);
+        fim++;
+    }
+    exibir();
+}
+
+void inc(void){
+    printf("\n o valor do início na fila é %d\n", dado[comeco]);
+    //topo--;
+    system("PAUSE");
+    
+}
+
+void remover(void){
+    if (fim == 0){
+        printf("\nA fila esta vazia \n");
+    }
+	else{
+        printf("\nRetirado o valor %d da fila\n", dado[comeco]);
+        fim = fim-1;
+        for(int i = 0; i < fim; i++){
+        	dado[i] = dado[(i+1)];
+		}
+    }
+    exibir();
+}
+
+
+int menu(){
+    //switch case 
+    
+    printf("---Programa de fila em C---");
+    printf("\nDigite 1 para inserir ");
+    printf("\nDigite 2 para remover ");
+    printf("\nDigite 3 para exibir ");
+    printf("\nDigite 4 para ver o inicio ");
+    printf("\nSe você deseja sair, aperte 5 ");
+    //printf("\ndigite a opção que vc quer executar: ");
+    scanf("%d", &op); // leitura da entrada via teclado
+    
+    switch(op){
+        case 1: inserir();
+            break;
+        case 2: remover();
+            break;
+        case 3: exibir();
+            break;
+        case 4: inc();
+            break;
+        case 5: break;    
+    }
+    return 0;
+}
+
+int main(){
+    
+    while ( op != 5){
+        system("cls");
+        menu();
+    }
+    return 0;
+}
