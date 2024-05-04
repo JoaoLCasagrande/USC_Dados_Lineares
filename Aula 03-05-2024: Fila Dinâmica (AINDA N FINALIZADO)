@@ -8,7 +8,6 @@
 struct fila{
     int ultimo;
     fila *proximo;
-    //fila *ultimo;
 };
 
 fila *comeco;
@@ -23,20 +22,17 @@ void enfileirar(int novovalor){
     fila *fim;
     fim= (fila*)malloc(sizeof(fila));   
     fim->fim=novovalor;
-    if (comeco = NULL)
-    
-    fim->ultimo=final;
-    topo=fim;
+    if (comeco = NULL){
+    	comeco = fim;
+	}
+    else{
+    	final=fim;
+	}
 
-    
-//Novo nó (anterior) aponta para topo;
-//Topo aponta para o novo nó
-
-
-    printf("Elemento %d inserido com sucesso",fim->ultimo);
+    printf("Elemento %d inserido com sucesso",fim->final);
     getch();
     system("cls");
-}//fecha empilha
+}//fecha enfileirar
 
 /*
 void mostra(){
